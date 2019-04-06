@@ -4,6 +4,20 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "msys2 docker build",
+        "type": "shell",
+        "command": "winci-msys2/build_docker.ps1",
+        "group": "build",
+        "problemMatcher": []
+      },
+      {
+        "label": "andk docker build",
+        "type": "shell",
+        "command": "winci-andk/build_docker.ps1",
+        "group": "build",
+        "problemMatcher": []
+      },
+      {
         "label": "msys2 dockerfile",
         "type": "shell",
         "command": "winci-msys2/make_dockerfile.ps1",
