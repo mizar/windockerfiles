@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "msys2 dockerfile",
+        "type": "shell",
+        "command": "winci-msys2/make_dockerfile.ps1",
+        "group": "build",
+        "problemMatcher": []
+      },
+      {
+        "label": "andk dockerfile",
+        "type": "shell",
+        "command": "winci-andk/make_dockerfile.ps1",
+        "group": "build",
+        "problemMatcher": []
+      },
+    ]
+}
