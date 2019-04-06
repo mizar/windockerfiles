@@ -13,6 +13,8 @@ cd winci-andk
 docker.exe build -t mizarjp/winci-andk . --no-cache
 ```
 
+- winci-andk の docker image は Android SDK ライセンスの再配布禁止規定の都合上、 dockerfile から各自でビルド願います。
+
 ### full-build YaneuraOu (android ndk build)
 
 ```

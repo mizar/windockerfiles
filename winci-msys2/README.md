@@ -12,6 +12,8 @@ cd winci-msys2
 docker.exe build -t mizarjp/winci-msys2 . --no-cache
 ```
 
+- https://cloud.docker.com/repository/docker/mizarjp/winci-msys2
+
 ### full-build YaneuraOu (msys2 build)
 
 ```
