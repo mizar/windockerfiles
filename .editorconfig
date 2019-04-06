@@ -1,0 +1,17 @@
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+
+# Windows files
+[*.{bat,cmd,ps1}]
+end_of_line = crlf
+
+[*.ps1]
+charset = utf-8-bom
