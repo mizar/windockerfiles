@@ -4,6 +4,13 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "msys2 update check",
+        "type": "shell",
+        "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacman --noconfirm -Syp'",
+        "group": "test",
+        "problemMatcher": []
+      },
+      {
         "label": "msys2 docker build",
         "type": "shell",
         "command": "winci-msys2/build_docker.ps1",
