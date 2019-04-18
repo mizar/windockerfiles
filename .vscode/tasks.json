@@ -6,7 +6,7 @@
       {
         "label": "msys2 update check",
         "type": "shell",
-        "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacman --noconfirm -Syp'",
+        "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacman --noconfirm -Syuup'",
         "group": "test",
         "problemMatcher": []
       },
