@@ -38,5 +38,11 @@
         "group": "build",
         "problemMatcher": []
       },
+      {
+        "label": "msys2 docker latest image push",
+        "type": "shell",
+        "command": "docker push mizarjp/winci-msys2:latest",
+        "problemMatcher": []
+      }
     ]
 }
