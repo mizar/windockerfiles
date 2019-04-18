@@ -1,6 +1,7 @@
 ## requires
 
 - Microsoft Windows {10 Professional, 10 Enterprise, or Server 2019} 64-bit Version 1809 (Build 17763.*) or later
+  - `mcr.microsoft.com/windows/servercore:1809` をベースにしているため、 Process isolation では同じバージョンが必要、 Hyper-V isolation では同じかそれ以降のバージョンが必要
 - Docker Desktop for Windows (needed switch to Windows containers mode)
   - [Community edition](https://hub.docker.com/editions/community/docker-ce-desktop-windows) でも使えるようです。
   - Docker Engine 18.09.1 以降 (Docker Desktop Version 2.0.0.3 時点で Docker Engine 18.09.2) では、 Windows 10 でも Process isolation で仮想化を実行できるようになり、 Hyper-V isolation より軽量に実行できるかと思います。但し、 Process isolation では ACL 周りで注意が必要な場合があるようです。

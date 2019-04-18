@@ -1,3 +1,8 @@
+# Windows Container Dockerfiles
+
+- [Build Environment: Android NDK](./winci-andk)
+- [Build Environment: MSYS2](./winci-msys2)
+
 ## requires
 
 - Microsoft Windows {10 Professional, 10 Enterprise, or Server 2019} 64-bit Version 1809 (Build 17763.*) or later
@@ -8,36 +13,3 @@
     - [Docker on Windows - Container Storage # Persistent Volumes](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage#persistent-volumes)
     - [Process Isolation for containers in Windows 10](https://blogs.msdn.microsoft.com/freddyk/2019/01/13/process-isolation-for-containers-in-windows-10/)
     - [Windows 10 で Process Isolation を使う時の注意点など](https://blog.shibayan.jp/entry/20190208/1549617101)
-
-## examples
-
-### build docker
-
-```
-cd winci-msys2
-docker.exe build -t mizarjp/winci-msys2 . --no-cache
-```
-
-- https://cloud.docker.com/repository/docker/mizarjp/winci-msys2
-
-### full-build YaneuraOu (msys2 build)
-
-```
-mkdir C:\git
-cd C:\git
-git.exe clone https://github.com/mizar/YaneuraOu.git
-cd C:\git\YaneuraOu
-docker run --rm -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
-```
-
-- Process isolation
-
-```
-docker run --rm --isolation=process -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
-```
-
-- Hyper-V isolation
-
-```
-docker run --rm --isolation=hyperv -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
-```
