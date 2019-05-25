@@ -6,7 +6,14 @@
       {
         "label": "msys2 update check",
         "type": "shell",
-        "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacman --noconfirm -Syuup'",
+        "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m automake: autoconf: make: intltool: libtool:'",
+        "group": "test",
+        "problemMatcher": []
+      },
+      {
+        "label": "andk update check",
+        "type": "shell",
+        "command": "docker run --rm mizarjp/winci-andk:latest C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --verbose --update",
         "group": "test",
         "problemMatcher": []
       },

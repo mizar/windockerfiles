@@ -15,13 +15,13 @@ Remove-Item @('C:\Windows\Temp\*','C:\Users\*\Appdata\Local\Temp\*') -Force -Rec
 [Environment]::SetEnvironmentVariable('MSYSTEM',($env:MSYSTEM='MSYS2'),'Machine');
 [Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\msys64','Machine');
 $env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');
+(Get-Content C:\msys64\etc\pacman.conf -Raw) -creplace "#XferCommand = /usr/bin/curl","XferCommand = /usr/bin/curl"|Out-File C:\msys64\etc\pacman.conf -Encoding ascii;
 '@)))"]
 RUN ``
 C:\msys64\usr\bin\bash.exe -lc exit & ``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Syuu' & ``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Syu' & ``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Su' & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc' & ``
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --noprogressbar -S toolchain:m clang:m openblas:m automake: autoconf: make: intltool: libtool:' & ``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc'
 "@ -FilePath (Join-Path $PSScriptRoot 'Dockerfile') -Encoding utf8 -Force;
