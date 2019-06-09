@@ -16,11 +16,4 @@ Remove-Item @('C:\Windows\Temp\*','C:\Users\*\Appdata\Local\Temp\*') -Force -Rec
 [Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\msys64','Machine');
 $env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');
 '@)))"]
-RUN ``
-C:\msys64\usr\bin\bash.exe -lc exit & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Syuu' & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Syu' & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm --noprogressbar -Su' & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --noprogressbar --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:' & ``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc'
 "@ -FilePath (Join-Path $PSScriptRoot 'Dockerfile') -Encoding utf8 -Force;
