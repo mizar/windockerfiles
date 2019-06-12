@@ -41,7 +41,7 @@
         "label": "msys2-base enter powershell",
         "type": "shell",
         "group": "test",
-        "command": "docker run -it --rm mizarjp/winci-msys2-major powershell",
+        "command": "docker run -it --rm mizarjp/winci-msys2-base powershell",
         "problemMatcher": []
       },
       {
@@ -103,7 +103,7 @@
       {
         "label": "msys2-base docker build",
         "type": "shell",
-        "command": "winci-msys2-major/build_docker.ps1",
+        "command": "winci-msys2-base/build_docker.ps1",
         "group": "build",
         "problemMatcher": []
       },
