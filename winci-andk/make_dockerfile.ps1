@@ -11,7 +11,7 @@ Expand-Archive -Path C:\Windows\Temp\sdk-tools-windows.zip -DestinationPath C:\A
 @{FilePath='C:\Windows\System32\msiexec.exe';Args=@('/i','C:\Windows\Temp\OpenJDK8U-jdk_x64_windows.msi','/passive','ADDLOCAL=FeatureOracleJavaSoft,FeatureEnvironment,FeatureMain,FeatureJarFileRunWith,FeatureJavaHome');};
 )|%{Start-Process -NoNewWindow -PassThru -Wait -FilePath $_.FilePath -ArgumentList $_.Args}
 Remove-Item @('C:\Windows\Temp\*','C:\Users\*\Appdata\Local\Temp\*') -Force -Recurse;
-[Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\Android\android-sdk\ndk-bundle','Machine');
+[Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\Android\android-sdk\tools\bin;C:\Android\android-sdk\ndk-bundle','Machine');
 $env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');
 '@)))"]
 RUN echo y|C:\Android\android-sdk\tools\bin\sdkmanager.bat ndk-bundle
