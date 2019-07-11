@@ -1,6 +1,6 @@
 ﻿Out-File -InputObject @"
 # escape=``
-FROM mcr.microsoft.com/windows/servercore:1809
+FROM mcr.microsoft.com/windows/servercore:1903
 RUN ["powershell","-ExecutionPolicy","Bypass","-EncodedCommand","$([Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes(@'
 $ErrorActionPreference='Stop';
 $ProgressPreference='SilentlyContinue';

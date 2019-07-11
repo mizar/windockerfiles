@@ -4,13 +4,43 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "pull servercore",
+      "label": "docker image prune",
+      "type": "shell",
+      "command": "docker image prune --force",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker image ls",
+      "type": "shell",
+      "command": "docker image ls",
+      "problemMatcher": []
+    },
+    {
+      "label": "pull servercore 1809",
       "type": "shell",
       "command": "docker pull mcr.microsoft.com/windows/servercore:1809",
       "problemMatcher": []
     },
     {
-      "label": "msys2 update check",
+      "label": "pull servercore 1903",
+      "type": "shell",
+      "command": "docker pull mcr.microsoft.com/windows/servercore:1903",
+      "problemMatcher": []
+    },
+    {
+      "label": "pull nanoserver 1809",
+      "type": "shell",
+      "command": "docker pull mcr.microsoft.com/windows/nanoserver:1809",
+      "problemMatcher": []
+    },
+    {
+      "label": "pull nanoserver 1903",
+      "type": "shell",
+      "command": "docker pull mcr.microsoft.com/windows/nanoserver:1903",
+      "problemMatcher": []
+    },
+    {
+       "label": "msys2 update check",
       "type": "shell",
       "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
       "group": "test",
@@ -118,6 +148,13 @@
       "type": "shell",
       "command": "winci-msys2-base/make_dockerfile.ps1",
       "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "msys2-base update check",
+      "type": "shell",
+      "command": "docker run --rm mizarjp/winci-msys2-base:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup'",
+      "group": "test",
       "problemMatcher": []
     },
     {
