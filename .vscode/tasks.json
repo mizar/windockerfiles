@@ -16,9 +16,9 @@
       "problemMatcher": []
     },
     {
-      "label": "pull servercore 1809",
+      "label": "pull servercore 1909",
       "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/servercore:1809",
+      "command": "docker pull mcr.microsoft.com/windows/servercore:1909",
       "problemMatcher": []
     },
     {
@@ -28,9 +28,33 @@
       "problemMatcher": []
     },
     {
-      "label": "pull nanoserver 1809",
+      "label": "pull servercore 1809",
       "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/nanoserver:1809",
+      "command": "docker pull mcr.microsoft.com/windows/servercore:1809",
+      "problemMatcher": []
+    },
+    {
+      "label": "load servercore 1909",
+      "type": "shell",
+      "command": "docker load -i servercore_1909_20191210.tar",
+      "problemMatcher": []
+    },
+    {
+      "label": "load servercore 1903",
+      "type": "shell",
+      "command": "docker load -i servercore_1903_20191210.tar",
+      "problemMatcher": []
+    },
+    {
+      "label": "load servercore 1809",
+      "type": "shell",
+      "command": "docker load -i servercore_1809_20191210.tar",
+      "problemMatcher": []
+    },
+    {
+      "label": "pull nanoserver 1909",
+      "type": "shell",
+      "command": "docker pull mcr.microsoft.com/windows/nanoserver:1909",
       "problemMatcher": []
     },
     {
@@ -40,9 +64,36 @@
       "problemMatcher": []
     },
     {
+      "label": "pull nanoserver 1809",
+      "type": "shell",
+      "command": "docker pull mcr.microsoft.com/windows/nanoserver:1809",
+      "problemMatcher": []
+    },
+    {
+      "label": "servercore 1809 enter powershell",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mcr.microsoft.com/windows/servercore:1809 powershell",
+      "problemMatcher": []
+    },
+    {
+      "label": "servercore 1903 enter powershell",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mcr.microsoft.com/windows/servercore:1903 powershell",
+      "problemMatcher": []
+    },
+    {
+      "label": "servercore 1909 enter powershell",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mcr.microsoft.com/windows/servercore:1909 powershell",
+      "problemMatcher": []
+    },
+    {
        "label": "msys2 update check",
       "type": "shell",
-      "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
+      "command": "docker run --rm --isolation=process mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
       "group": "test",
       "problemMatcher": []
     },
@@ -50,28 +101,28 @@
       "label": "msys2 enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2 powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2 powershell",
       "problemMatcher": []
     },
     {
       "label": "msys2 enter mingw32",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -mingw32",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -mingw32",
       "problemMatcher": []
     },
     {
       "label": "msys2 enter mingw64",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -mingw64",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -mingw64",
       "problemMatcher": []
     },
     {
       "label": "msys2 enter msys2",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -msys2",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2 msys2_shell.cmd -no-start -defterm -msys2",
       "problemMatcher": []
     },
     {
@@ -91,28 +142,28 @@
       "label": "msys2-major enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-major powershell",
       "problemMatcher": []
     },
     {
       "label": "msys2-major enter mingw32",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -mingw32",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -mingw32",
       "problemMatcher": []
     },
     {
       "label": "msys2-major enter mingw64",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -mingw64",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -mingw64",
       "problemMatcher": []
     },
     {
       "label": "msys2-major enter msys2",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -msys2",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-major msys2_shell.cmd -no-start -defterm -msys2",
       "problemMatcher": []
     },
     {
@@ -133,20 +184,13 @@
       "label": "msys2-base enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-base powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-base powershell",
       "problemMatcher": []
     },
     {
       "label": "msys2-base docker build",
       "type": "shell",
-      "command": "winci-msys2-base/build_docker.ps1",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "msys2-base dockerfile",
-      "type": "shell",
-      "command": "winci-msys2-base/make_dockerfile.ps1",
+      "command": "docker build -t mizarjp/winci-msys2-base winci-msys2-base --isolation=process",
       "group": "build",
       "problemMatcher": []
     },
@@ -161,7 +205,7 @@
       "label": "andk enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-andk powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-andk powershell",
       "problemMatcher": []
     },
     {
@@ -174,14 +218,14 @@
     {
       "label": "andk docker build",
       "type": "shell",
-      "command": "winci-andk/build_docker.ps1",
+      "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
       "group": "build",
       "problemMatcher": []
     },
     {
       "label": "andk dockerfile",
       "type": "shell",
-      "command": "winci-andk/make_dockerfile.ps1",
+      "command": "powershell -exec bypass -file winci-andk/make_dockerfile.ps1",
       "group": "build",
       "problemMatcher": []
     },
@@ -189,20 +233,20 @@
       "label": "andk-r19c enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-andk-r19c powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-andk-r19c powershell",
       "problemMatcher": []
     },
     {
       "label": "andk-r19c docker build",
       "type": "shell",
-      "command": "winci-andk-r19c/build_docker.ps1",
+      "command": "powershell -exec bypass -file winci-andk-r19c/build_docker.ps1",
       "group": "build",
       "problemMatcher": []
     },
     {
       "label": "andk-r19c dockerfile",
       "type": "shell",
-      "command": "winci-andk-r19c/make_dockerfile.ps1",
+      "command": "powershell -exec bypass -file winci-andk-r19c/make_dockerfile.ps1",
       "group": "build",
       "problemMatcher": []
     },
@@ -210,7 +254,7 @@
       "label": "andk-r20 enter powershell",
       "type": "shell",
       "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-andk-r20 powershell",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-andk-r20 powershell",
       "problemMatcher": []
     },
     {
