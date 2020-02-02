@@ -29,6 +29,7 @@ mkdir C:\git
 cd C:\git
 git.exe clone https://github.com/mizar/YaneuraOu.git
 cd C:\git\YaneuraOu
+docker pull mizarjp/winci-msys2:latest
 docker run --rm -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
 ```
 

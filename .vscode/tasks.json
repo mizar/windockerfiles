@@ -188,6 +188,27 @@
       "problemMatcher": []
     },
     {
+      "label": "msys2-base enter mingw32",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-base msys2_shell.cmd -no-start -defterm -mingw32",
+      "problemMatcher": []
+    },
+    {
+      "label": "msys2-base enter mingw64",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-base msys2_shell.cmd -no-start -defterm -mingw64",
+      "problemMatcher": []
+    },
+    {
+      "label": "msys2-base enter msys2",
+      "type": "shell",
+      "group": "test",
+      "command": "docker run -it --rm --isolation=process mizarjp/winci-msys2-base msys2_shell.cmd -no-start -defterm -msys2",
+      "problemMatcher": []
+    },
+    {
       "label": "msys2-base docker build",
       "type": "shell",
       "command": "docker build -t mizarjp/winci-msys2-base winci-msys2-base --isolation=process",
