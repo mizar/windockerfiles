@@ -1,10 +1,10 @@
 ﻿Out-File -InputObject @"
 # escape=``
-FROM mcr.microsoft.com/windows/servercore:1903
+FROM mcr.microsoft.com/windows/servercore:1909
 RUN ["powershell","-ExecutionPolicy","Bypass","-EncodedCommand","$([Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes(@'
 $ErrorActionPreference='Stop';
 $ProgressPreference='SilentlyContinue';
-Invoke-WebRequest 'https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_windows_hotspot_8u212b04.msi' -OutFile C:\Windows\Temp\OpenJDK8U-jdk_x64_windows.msi;
+Invoke-WebRequest 'https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_windows_hotspot_8u242b08.msi' -OutFile C:\Windows\Temp\OpenJDK8U-jdk_x64_windows.msi;
 Invoke-WebRequest 'https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip' -OutFile C:\Windows\Temp\sdk-tools-windows.zip;
 Expand-Archive -Path C:\Windows\Temp\sdk-tools-windows.zip -DestinationPath C:\Android\android-sdk;
 @(
