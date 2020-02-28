@@ -1,4 +1,4 @@
-Set-Location $PSScriptRoot;
+﻿Set-Location $PSScriptRoot;
 
 $Tags = @(1909;'ltsc2019';);
 $Targets = @('winci-msys2-base';'winci-msys2-major';'winci-msys2';);
@@ -34,9 +34,9 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 Write-Host 'Successfully installed MSYS2';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-major-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
   Out-File -InputObject @"
 # escape=``
@@ -48,7 +48,7 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:';``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
   $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
@@ -62,7 +62,11 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:';``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
+
+}
+
+$Tags|ForEach-Object { $Tag = $_;
 
   docker pull mcr.microsoft.com/windows/servercore:${Tag};
 

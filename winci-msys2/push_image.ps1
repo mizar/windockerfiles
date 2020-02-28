@@ -1,4 +1,4 @@
-Set-Location $PSScriptRoot;
+﻿Set-Location $PSScriptRoot;
 
 $Tags = @('latest';1909;'ltsc2019';);
 $Targets = @('winci-msys2';'winci-msys2-major';'winci-msys2-base';);

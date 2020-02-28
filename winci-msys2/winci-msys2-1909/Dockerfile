@@ -1,4 +1,4 @@
-# escape=`
+﻿# escape=`
 FROM mizarjp/winci-msys2-major:1909
 RUN powershell -Command "`
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
