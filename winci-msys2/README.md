@@ -29,18 +29,18 @@ mkdir C:\git
 cd C:\git
 git.exe clone https://github.com/mizar/YaneuraOu.git
 cd C:\git\YaneuraOu
-docker pull mizarjp/winci-msys2:latest
-docker run --rm -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
+docker pull mizarjp/winci-msys2:1909
+docker run --rm -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:1909 powershell C:\YaneuraOu\script\msys2_build.ps1
 ```
 
 - Process isolation
 
 ```
-docker run --rm --isolation=process -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
+docker run --rm --isolation=process -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:1909 powershell C:\YaneuraOu\script\msys2_build.ps1
 ```
 
 - Hyper-V isolation
 
 ```
-docker run --rm --isolation=hyperv -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:latest powershell C:\YaneuraOu\script\msys2_build.ps1
+docker run --rm --isolation=hyperv -v C:\git\YaneuraOu:C:\YaneuraOu mizarjp/winci-msys2:1909 powershell C:\YaneuraOu\script\msys2_build.ps1
 ```
