@@ -18,6 +18,13 @@
       "problemMatcher": []
     },
     {
+      "label": "winci-andk docker build",
+      "type": "shell",
+      "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
       "label": "docker image prune",
       "type": "shell",
       "command": "docker image prune --force",
@@ -244,20 +251,6 @@
       "type": "shell",
       "command": "docker run --rm mizarjp/winci-andk:1909 C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --list",
       "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk docker build",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk dockerfile",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-andk/make_dockerfile.ps1",
-      "group": "build",
       "problemMatcher": []
     }
   ]

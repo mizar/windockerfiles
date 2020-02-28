@@ -5,9 +5,9 @@ $Targets = @('winci-msys2-base';'winci-msys2-major';'winci-msys2';);
 
 $Tags|ForEach-Object {
 
-$DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$_");
-New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-Out-File -InputObject @"
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$_");
+  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
+  Out-File -InputObject @"
 # escape=``
 FROM mcr.microsoft.com/windows/servercore:$_
 #ADD 7za920.zip C:\Windows\Temp\
@@ -36,9 +36,9 @@ Write-Host 'Successfully installed MSYS2';``
 "
 "@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
-$DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
-New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-Out-File -InputObject @"
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
+  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
+  Out-File -InputObject @"
 # escape=``
 FROM mizarjp/winci-msys2-base:$_
 RUN powershell -Command "``
@@ -50,9 +50,9 @@ C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
 "@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
-$DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
-New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-Out-File -InputObject @"
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
+  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
+  Out-File -InputObject @"
 # escape=``
 FROM mizarjp/winci-msys2-major:$_
 RUN powershell -Command "``
@@ -64,12 +64,14 @@ C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
 "@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
+  docker pull mcr.microsoft.com/windows/servercore:${Tag};
+
+  $Targets|ForEach-Object { $Target = $_;
+    docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
+  }
+
 }
 
-$Tags|ForEach-Object {
-  $Tag = $_;
-  docker pull mcr.microsoft.com/windows/servercore:${Tag};
-  $Targets|ForEach-Object {
-    docker.exe build -t mizarjp/${_}:${Tag} ${_}-${Tag} --no-cache;
-  }
+$Targets|ForEach-Object { $Target = $_;
+  docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
 }
