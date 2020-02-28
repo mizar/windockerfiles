@@ -4,16 +4,16 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "winci-msys2 dockerfile",
+      "label": "winci-msys2 docker build",
       "type": "shell",
-      "command": "powershell -exec bypass -file winci-msys2/make_dockerfile.ps1",
+      "command": "powershell -exec bypass -file winci-msys2/build_docker.ps1",
       "group": "build",
       "problemMatcher": []
     },
     {
-      "label": "winci-msys2 docker build",
+      "label": "winci-msys2 push image",
       "type": "shell",
-      "command": "powershell -exec bypass -file winci-msys2/build_docker.ps1",
+      "command": "powershell -exec bypass -file winci-msys2/push_image.ps1",
       "group": "build",
       "problemMatcher": []
     },
@@ -160,30 +160,6 @@
       "type": "shell",
       "group": "test",
       "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -msys2",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:ltsc2019 docker image push",
-      "type": "shell",
-      "command": "docker push mizarjp/winci-msys2:ltsc2019",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 docker image push",
-      "type": "shell",
-      "command": "docker push mizarjp/winci-msys2:1909",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:ltsc2019 docker image push",
-      "type": "shell",
-      "command": "docker push mizarjp/winci-msys2-base:ltsc2019",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 docker image push",
-      "type": "shell",
-      "command": "docker push mizarjp/winci-msys2-base:1909",
       "problemMatcher": []
     },
     {
