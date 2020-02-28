@@ -1,15 +1,15 @@
-﻿Set-Location $PSScriptRoot;
+Set-Location $PSScriptRoot;
 
 $Tags = @(1909;'ltsc2019';);
 $Targets = @('winci-msys2-base';'winci-msys2-major';'winci-msys2';);
 
-$Tags|ForEach-Object {
+$Tags|ForEach-Object { $Tag = $_;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$_");
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
   Out-File -InputObject @"
 # escape=``
-FROM mcr.microsoft.com/windows/servercore:$_
+FROM mcr.microsoft.com/windows/servercore:$Tag
 #ADD 7za920.zip C:\Windows\Temp\
 #ADD 7za920.zip msys2-base-x86_64-latest.tar.xz C:\Windows\Temp\
 RUN powershell -Command "``
@@ -34,13 +34,13 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 Write-Host 'Successfully installed MSYS2';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
   Out-File -InputObject @"
 # escape=``
-FROM mizarjp/winci-msys2-base:$_
+FROM mizarjp/winci-msys2-base:$Tag
 RUN powershell -Command "``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
@@ -48,13 +48,13 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:';``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$_");
+  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
   Out-File -InputObject @"
 # escape=``
-FROM mizarjp/winci-msys2-major:$_
+FROM mizarjp/winci-msys2-major:$Tag
 RUN powershell -Command "``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
@@ -62,7 +62,7 @@ C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' 
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:';``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
 
   docker pull mcr.microsoft.com/windows/servercore:${Tag};
 

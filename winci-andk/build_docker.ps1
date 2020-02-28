@@ -1,4 +1,4 @@
-﻿Set-Location $PSScriptRoot;
+Set-Location $PSScriptRoot;
 
 $Tags = @(1909;'ltsc2019';);
 $Targets = @('winci-andk';);
@@ -24,7 +24,7 @@ Remove-Item @('C:\Windows\Temp\*','C:\Users\*\Appdata\Local\Temp\*') -Force -Rec
 $env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');
 '@)))"]
 RUN echo y|C:\Android\android-sdk\tools\bin\sdkmanager.bat ndk-bundle
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
+"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding ascii -Force;
 
   docker pull mcr.microsoft.com/windows/servercore:${Tag};
 
