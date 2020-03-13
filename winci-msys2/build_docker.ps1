@@ -1,7 +1,7 @@
 ﻿Set-Location $PSScriptRoot;
 
 $Tags = @(1909;'ltsc2019';);
-$Targets = @('winci-msys2-base';'winci-msys2-major';'winci-msys2';);
+$Targets = @('winci-msys2-base';'winci-msys2';);
 
 $Tags|ForEach-Object { $Tag = $_;
 
@@ -36,25 +36,11 @@ Write-Host 'Successfully installed MSYS2';``
 "
 "@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-major-$Tag");
-  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-  Out-File -InputObject @"
-# escape=``
-FROM mizarjp/winci-msys2-base:$Tag
-RUN powershell -Command "``
-C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m base-devel: msys2-devel:';``
-C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
-"
-"@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
-
   $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
   New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
   Out-File -InputObject @"
 # escape=``
-FROM mizarjp/winci-msys2-major:$Tag
+FROM mizarjp/winci-msys2-base:$Tag
 RUN powershell -Command "``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
