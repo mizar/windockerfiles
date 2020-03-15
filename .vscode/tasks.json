@@ -14,7 +14,6 @@
       "label": "winci-msys2 push image",
       "type": "shell",
       "command": "powershell -exec bypass -file winci-msys2/push_image.ps1",
-      "group": "build",
       "problemMatcher": []
     },
     {
@@ -22,6 +21,12 @@
       "type": "shell",
       "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
       "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "winci-andk push image",
+      "type": "shell",
+      "command": "powershell -exec bypass -file winci-andk/push_image.ps1",
       "problemMatcher": []
     },
     {
