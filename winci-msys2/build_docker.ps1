@@ -57,11 +57,12 @@ $Tags|ForEach-Object { $Tag = $_;
   docker pull mcr.microsoft.com/windows/servercore:${Tag};
 
   $Targets|ForEach-Object { $Target = $_;
+
     docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
+
+    if($Tag -eq 1909) {
+      docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
+    }
+
   }
-
-}
-
-$Targets|ForEach-Object { $Target = $_;
-  docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
 }
