@@ -175,41 +175,6 @@
       "problemMatcher": []
     },
     {
-      "label": "winci-msys2-major:1909 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major:1909 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-major:1909 enter mingw32",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major:1909 msys2_shell.cmd -no-start -defterm -mingw32",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-major:1909 enter mingw64",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major:1909 msys2_shell.cmd -no-start -defterm -mingw64",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-major:1909 enter msys2",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-major:1909 msys2_shell.cmd -no-start -defterm -msys2",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-major:1909 update check",
-      "type": "shell",
-      "command": "docker run --rm mizarjp/winci-msys2-major:1909 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
       "label": "winci-msys2-base:1909 enter powershell",
       "type": "shell",
       "group": "test",
