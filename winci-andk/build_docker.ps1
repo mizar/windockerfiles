@@ -14,7 +14,7 @@ RUN ["powershell","-ExecutionPolicy","Bypass","-EncodedCommand","$([Convert]::To
 $ErrorActionPreference='Stop';
 $ProgressPreference='SilentlyContinue';
 Push-Location C:\Windows\Temp;
-curl.exe -#RL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_windows_hotspot_8u242b08.msi -o OpenJDK8U-jdk_x64_windows.msi;
+curl.exe -#RL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_x64_windows_hotspot_8u252b09.msi -o OpenJDK8U-jdk_x64_windows.msi;
 curl.exe -#RL https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip -o sdk-tools-windows.zip;
 Expand-Archive -Path sdk-tools-windows.zip -DestinationPath C:\Android\android-sdk;
 Pop-Location;
