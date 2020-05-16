@@ -1,227 +1,239 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "winci-msys2 docker build",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-msys2/build_docker.ps1",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2 push image",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-msys2/push_image.ps1",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk docker build",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk push image",
-      "type": "shell",
-      "command": "powershell -exec bypass -file winci-andk/push_image.ps1",
-      "problemMatcher": []
-    },
-    {
-      "label": "docker image prune",
-      "type": "shell",
-      "command": "docker image prune --force",
-      "problemMatcher": []
-    },
-    {
-      "label": "docker image ls",
-      "type": "shell",
-      "command": "docker image ls",
-      "problemMatcher": []
-    },
-    {
-      "label": "pull servercore 1909",
-      "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/servercore:1909",
-      "problemMatcher": []
-    },
-    {
-      "label": "pull servercore 1903",
-      "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/servercore:1903",
-      "problemMatcher": []
-    },
-    {
-      "label": "pull servercore 1809",
-      "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/servercore:1809",
-      "problemMatcher": []
-    },
-    {
-      "label": "pull servercore ltsc2019",
-      "type": "shell",
-      "command": "docker pull mcr.microsoft.com/windows/servercore:ltsc2019",
-      "problemMatcher": []
-    },
-    {
-      "label": "load servercore 1909",
-      "type": "shell",
-      "command": "docker load -i servercore_1909_20191210.tar",
-      "problemMatcher": []
-    },
-    {
-      "label": "load servercore 1903",
-      "type": "shell",
-      "command": "docker load -i servercore_1903_20191210.tar",
-      "problemMatcher": []
-    },
-    {
-      "label": "load servercore 1809",
-      "type": "shell",
-      "command": "docker load -i servercore_1809_20191210.tar",
-      "problemMatcher": []
-    },
-    {
-      "label": "servercore ltsc2019 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:ltsc2019 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "servercore 1809 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1809 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "servercore 1903 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1903 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "servercore 1909 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1909 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:ltsc2019 update check",
-      "type": "shell",
-      "command": "docker run --rm mizarjp/winci-msys2:ltsc2019 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 update check",
-      "type": "shell",
-      "command": "docker run --rm mizarjp/winci-msys2:1909 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:ltsc2019 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:1909 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:ltsc2019 enter mingw32",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw32",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 enter mingw32",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -mingw32",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:ltsc2019 enter mingw64",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw64",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 enter mingw64",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -mingw64",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2:1909 enter msys2",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -msys2",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 enter mingw32",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -mingw32",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 enter mingw64",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -mingw64",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 enter msys2",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -msys2",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-msys2-base:1909 update check",
-      "type": "shell",
-      "command": "docker run --rm mizarjp/winci-msys2-base:1909 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup'",
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk:1909 enter powershell",
-      "type": "shell",
-      "group": "test",
-      "command": "docker run -it --rm mizarjp/winci-andk:1909 powershell",
-      "problemMatcher": []
-    },
-    {
-      "label": "winci-andk:1909 update check",
-      "type": "shell",
-      "command": "docker run --rm mizarjp/winci-andk:1909 C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --list",
-      "group": "test",
-      "problemMatcher": []
-    }
-  ]
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker switch Windows engine",
+            "type": "shell",
+            "command": "& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine",
+            "problemMatcher": []
+        },
+        {
+            "label": "Docker switch Linux engine",
+            "type": "shell",
+            "command": "& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchLinuxEngine",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2 docker build",
+            "type": "shell",
+            "command": "powershell -exec bypass -file winci-msys2/build_docker.ps1",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2 push image",
+            "type": "shell",
+            "command": "powershell -exec bypass -file winci-msys2/push_image.ps1",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-andk docker build",
+            "type": "shell",
+            "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-andk push image",
+            "type": "shell",
+            "command": "powershell -exec bypass -file winci-andk/push_image.ps1",
+            "problemMatcher": []
+        },
+        {
+            "label": "docker image prune",
+            "type": "shell",
+            "command": "docker image prune --force",
+            "problemMatcher": []
+        },
+        {
+            "label": "docker image ls",
+            "type": "shell",
+            "command": "docker image ls",
+            "problemMatcher": []
+        },
+        {
+            "label": "pull servercore 1909",
+            "type": "shell",
+            "command": "docker pull mcr.microsoft.com/windows/servercore:1909",
+            "problemMatcher": []
+        },
+        {
+            "label": "pull servercore 1903",
+            "type": "shell",
+            "command": "docker pull mcr.microsoft.com/windows/servercore:1903",
+            "problemMatcher": []
+        },
+        {
+            "label": "pull servercore 1809",
+            "type": "shell",
+            "command": "docker pull mcr.microsoft.com/windows/servercore:1809",
+            "problemMatcher": []
+        },
+        {
+            "label": "pull servercore ltsc2019",
+            "type": "shell",
+            "command": "docker pull mcr.microsoft.com/windows/servercore:ltsc2019",
+            "problemMatcher": []
+        },
+        {
+            "label": "load servercore 1909",
+            "type": "shell",
+            "command": "docker load -i servercore_1909_20191210.tar",
+            "problemMatcher": []
+        },
+        {
+            "label": "load servercore 1903",
+            "type": "shell",
+            "command": "docker load -i servercore_1903_20191210.tar",
+            "problemMatcher": []
+        },
+        {
+            "label": "load servercore 1809",
+            "type": "shell",
+            "command": "docker load -i servercore_1809_20191210.tar",
+            "problemMatcher": []
+        },
+        {
+            "label": "servercore ltsc2019 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:ltsc2019 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "servercore 1809 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1809 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "servercore 1903 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1903 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "servercore 1909 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:1909 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:ltsc2019 update check",
+            "type": "shell",
+            "command": "docker run --rm mizarjp/winci-msys2:ltsc2019 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:1909 update check",
+            "type": "shell",
+            "command": "docker run --rm mizarjp/winci-msys2:1909 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:ltsc2019 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:1909 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:1909 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:ltsc2019 enter mingw32",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw32",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:1909 enter mingw32",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -mingw32",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:ltsc2019 enter mingw64",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw64",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:1909 enter mingw64",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -mingw64",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2:1909 enter msys2",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2:1909 msys2_shell.cmd -no-start -defterm -msys2",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2-base:1909 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2-base:1909 enter mingw32",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -mingw32",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2-base:1909 enter mingw64",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -mingw64",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2-base:1909 enter msys2",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-msys2-base:1909 msys2_shell.cmd -no-start -defterm -msys2",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-msys2-base:1909 update check",
+            "type": "shell",
+            "command": "docker run --rm mizarjp/winci-msys2-base:1909 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup'",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-andk:1909 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mizarjp/winci-andk:1909 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "winci-andk:1909 update check",
+            "type": "shell",
+            "command": "docker run --rm mizarjp/winci-andk:1909 C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --list",
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
 }

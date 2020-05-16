@@ -1,13 +1,15 @@
 ﻿Set-Location $PSScriptRoot;
 
+& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
+
 $Tags = @(1909;'ltsc2019';);
 $Targets = @('winci-msys2-base';'winci-msys2';);
 
 $Tags|ForEach-Object { $Tag = $_;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$Tag");
-  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-  Out-File -InputObject @"
+    $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-base-$Tag");
+    New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
+    Out-File -InputObject @"
 # escape=``
 FROM mcr.microsoft.com/windows/servercore:$Tag
 #ADD 7za920.zip C:\Windows\Temp\
@@ -36,9 +38,9 @@ Write-Host 'Successfully installed MSYS2';``
 "
 "@ -FilePath (Join-Path $DockerPath 'Dockerfile') -Encoding utf8 -Force;
 
-  $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
-  New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
-  Out-File -InputObject @"
+    $DockerPath = (Join-Path $PSScriptRoot "winci-msys2-$Tag");
+    New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
+    Out-File -InputObject @"
 # escape=``
 FROM mizarjp/winci-msys2-base:$Tag
 RUN powershell -Command "``
@@ -54,15 +56,15 @@ C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 
 $Tags|ForEach-Object { $Tag = $_;
 
-  docker pull mcr.microsoft.com/windows/servercore:${Tag};
+    docker pull mcr.microsoft.com/windows/servercore:${Tag};
 
-  $Targets|ForEach-Object { $Target = $_;
+    $Targets|ForEach-Object { $Target = $_;
 
-    docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
+        docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
 
-    if($Tag -eq 1909) {
-      docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
+        if($Tag -eq 1909) {
+            docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
+        }
+
     }
-
-  }
 }
