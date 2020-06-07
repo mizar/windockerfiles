@@ -1,8 +1,8 @@
 ﻿Set-Location $PSScriptRoot;
 
-& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
+#& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
-$Tags = @('latest';1909;'ltsc2019';);
+$Tags = @('latest';'2004';'1909';'ltsc2019';);
 $Targets = @('winci-andk';);
 
 $Targets|ForEach-Object { $Target = $_;

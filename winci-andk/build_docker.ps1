@@ -1,9 +1,13 @@
 ﻿Set-Location $PSScriptRoot;
 
-& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
+#& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
-$Tags = @(1909;'ltsc2019';);
+$Latest = '2004';
+$Tags = @('2004';'1909';'ltsc2019';);
 $Targets = @('winci-andk';);
+
+# AdoptOpenJDK : https://adoptopenjdk.net/archive.html
+# Android SDK Command line tools : https://developer.android.com/studio?hl=ja#cmdline-tools
 
 $Tags|ForEach-Object { $Tag = $_;
 
@@ -16,8 +20,8 @@ RUN ["powershell","-ExecutionPolicy","Bypass","-EncodedCommand","$([Convert]::To
 $ErrorActionPreference='Stop';
 $ProgressPreference='SilentlyContinue';
 Push-Location C:\Windows\Temp;
-curl.exe -#RL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09/OpenJDK8U-jdk_x64_windows_hotspot_8u252b09.msi -o OpenJDK8U-jdk_x64_windows.msi;
-curl.exe -#RL https://dl.google.com/android/repository/commandlinetools-win-6200805_latest.zip -o commandlinetools-win.zip;
+curl.exe -#RL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09.1/OpenJDK8U-jdk_x64_windows_hotspot_8u252b09.msi -o OpenJDK8U-jdk_x64_windows.msi;
+curl.exe -#RL https://dl.google.com/android/repository/commandlinetools-win-6514223_latest.zip -o commandlinetools-win.zip;
 Expand-Archive -Path commandlinetools-win.zip -DestinationPath C:\Android\android-sdk;
 Pop-Location;
 Start-Process -NoNewWindow -PassThru -Wait -FilePath C:\Windows\System32\msiexec.exe -ArgumentList '/i','C:\Windows\Temp\OpenJDK8U-jdk_x64_windows.msi','/passive','ADDLOCAL=FeatureOracleJavaSoft,FeatureEnvironment,FeatureMain,FeatureJarFileRunWith,FeatureJavaHome';
@@ -38,8 +42,8 @@ $Tags|ForEach-Object { $Tag = $_;
 
         docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
 
-        if($Tag -eq 1909) {
-            docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
+        if($Tag -eq $Latest) {
+            docker image tag mizarjp/${Target}:${Latest} mizarjp/${Target}:latest;
         }
 
     }

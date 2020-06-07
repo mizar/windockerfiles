@@ -1,7 +1,7 @@
 ## requires
 
 - Microsoft Windows {10 Professional, 10 Enterprise, or Server 2019} 64-bit Version 1909 (Build 18363.*) or later
-    - `mcr.microsoft.com/windows/servercore:1909` をベースにしているため、 Process isolation では同じバージョンが必要、 Hyper-V isolation では同じかそれ以降のバージョンが必要
+    - Process isolation ではWindowsイメージと同じバージョンが必要、 Hyper-V isolation では同じかそれ以降のバージョンが必要
 - Docker Desktop for Windows (needed switch to Windows containers mode)
     - [Community edition](https://hub.docker.com/editions/community/docker-ce-desktop-windows) でも使えるようです。
     - Docker Desktop for Windows インストール時は既定で Linux containers の実行モードになっていますが、このイメージには Windows containers の実行モードに切り替える必要があります。

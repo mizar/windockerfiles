@@ -19,8 +19,8 @@ Remove-Item 'C:\Windows\Temp\*' -Force -Recurse;`
 [Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\msys64','Machine');`
 $env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');`
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
+C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Syuu; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
+C:\msys64\usr\bin\bash.exe -lc \"pacman --needed --noconfirm --disable-download-timeout -Syuu pactoys-git; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';`
 Write-Host 'Successfully installed MSYS2';`
 "

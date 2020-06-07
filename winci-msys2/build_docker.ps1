@@ -1,8 +1,9 @@
 ﻿Set-Location $PSScriptRoot;
 
-& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
+#& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
-$Tags = @(1909;'ltsc2019';);
+$Latest = '2004';
+$Tags = @('2004';'1909';'ltsc2019';);
 $Targets = @('winci-msys2-base';'winci-msys2';);
 
 $Tags|ForEach-Object { $Tag = $_;
@@ -31,8 +32,8 @@ Remove-Item 'C:\Windows\Temp\*' -Force -Recurse;``
 [Environment]::SetEnvironmentVariable('PATH',[Environment]::GetEnvironmentVariable('PATH','Machine')+';C:\msys64','Machine');``
 `$env:PATH=[Environment]::GetEnvironmentVariable('PATH','Machine')+';'+[Environment]::GetEnvironmentVariable('PATH','User');``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
+C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
+C:\msys64\usr\bin\bash.exe -lc \"pacman --needed --noconfirm --disable-download-timeout -Syuu pactoys-git; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 Write-Host 'Successfully installed MSYS2';``
 "
@@ -45,8 +46,8 @@ Write-Host 'Successfully installed MSYS2';``
 FROM mizarjp/winci-msys2-base:$Tag
 RUN powershell -Command "``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
-C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
+C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
+C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -S toolchain:m clang:m openblas:m openmp:m base-devel: msys2-devel:';``
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';``
 "
@@ -62,8 +63,8 @@ $Tags|ForEach-Object { $Tag = $_;
 
         docker.exe build -t mizarjp/${Target}:${Tag} ${Target}-${Tag} --no-cache;
 
-        if($Tag -eq 1909) {
-            docker image tag mizarjp/${Target}:1909 mizarjp/${Target}:latest;
+        if($Tag -eq $Latest) {
+            docker image tag mizarjp/${Target}:${Latest} mizarjp/${Target}:latest;
         }
 
     }
