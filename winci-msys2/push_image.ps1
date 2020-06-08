@@ -8,6 +8,8 @@ $Targets = @('winci-msys2';'winci-msys2-base';);
 
 $Targets|ForEach-Object { $Target = $_;
     $Tags|ForEach-Object { $Tag = $_;
+        Write-Host "* ${Target}:${Tag}";
+        docker image tag ${Target}:${Tag} ${DockerUser}/${Target}:${Tag};
         docker image push ${DockerUser}/${Target}:${Tag};
     }
 }

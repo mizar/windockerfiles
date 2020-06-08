@@ -118,14 +118,14 @@
         {
             "label": "winci-msys2:ltsc2019 update check",
             "type": "shell",
-            "command": "docker run --rm mizarjp/winci-msys2:ltsc2019 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
+            "command": "docker run --rm winci-msys2:ltsc2019 C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
             "group": "test",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:latest update check",
             "type": "shell",
-            "command": "docker run --rm mizarjp/winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
+            "command": "docker run --rm winci-msys2:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup toolchain:m clang:m openblas:m base-devel: msys2-devel:'",
             "group": "test",
             "problemMatcher": []
         },
@@ -133,83 +133,83 @@
             "label": "winci-msys2:ltsc2019 enter powershell",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 powershell",
+            "command": "docker run -it --rm winci-msys2:ltsc2019 powershell",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:latest enter powershell",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:latest powershell",
+            "command": "docker run -it --rm winci-msys2:latest powershell",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:ltsc2019 enter mingw32",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw32",
+            "command": "docker run -it --rm winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw32",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:latest enter mingw32",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:latest msys2_shell.cmd -no-start -defterm -mingw32",
+            "command": "docker run -it --rm winci-msys2:latest msys2_shell.cmd -no-start -defterm -mingw32",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:ltsc2019 enter mingw64",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw64",
+            "command": "docker run -it --rm winci-msys2:ltsc2019 msys2_shell.cmd -no-start -defterm -mingw64",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:latest enter mingw64",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:latest msys2_shell.cmd -no-start -defterm -mingw64",
+            "command": "docker run -it --rm winci-msys2:latest msys2_shell.cmd -no-start -defterm -mingw64",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2:latest enter msys2",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2:latest msys2_shell.cmd -no-start -defterm -msys2",
+            "command": "docker run -it --rm winci-msys2:latest msys2_shell.cmd -no-start -defterm -msys2",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2-base:latest enter powershell",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2-base:latest powershell",
+            "command": "docker run -it --rm winci-msys2-base:latest powershell",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2-base:latest enter mingw32",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -mingw32",
+            "command": "docker run -it --rm winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -mingw32",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2-base:latest enter mingw64",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -mingw64",
+            "command": "docker run -it --rm winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -mingw64",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2-base:latest enter msys2",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -msys2",
+            "command": "docker run -it --rm winci-msys2-base:latest msys2_shell.cmd -no-start -defterm -msys2",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2-base:latest update check",
             "type": "shell",
-            "command": "docker run --rm mizarjp/winci-msys2-base:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup'",
+            "command": "docker run --rm winci-msys2-base:latest C:\\msys64\\usr\\bin\\bash.exe -lc 'pacboy --needed --noconfirm -Syuup'",
             "group": "test",
             "problemMatcher": []
         },
@@ -217,13 +217,13 @@
             "label": "winci-andk:latest enter powershell",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mizarjp/winci-andk:latest powershell",
+            "command": "docker run -it --rm winci-andk:latest powershell",
             "problemMatcher": []
         },
         {
             "label": "winci-andk:latest update check",
             "type": "shell",
-            "command": "docker run --rm mizarjp/winci-andk:latest C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --sdk_root=C:\\Android\\android-sdk --list",
+            "command": "docker run --rm winci-andk:latest C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --sdk_root=C:\\Android\\android-sdk --list",
             "group": "test",
             "problemMatcher": []
         }

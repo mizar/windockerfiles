@@ -2,7 +2,6 @@
 
 #& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
-$DockerUser = 'mizarjp';
 $Latest = '2004';
 $Tags = @('2004';'1909';'ltsc2019';);
 $Targets = @('winci-msys2-base';'winci-msys2';);
@@ -62,10 +61,10 @@ $Tags|ForEach-Object { $Tag = $_;
 
     $Targets|ForEach-Object { $Target = $_;
 
-        docker.exe build -t ${DockerUser}/${Target}:${Tag} ${Target}-${Tag} --no-cache;
+        docker.exe build -t ${Target}:${Tag} ${Target}-${Tag} --no-cache;
 
         if($Tag -eq $Latest) {
-            docker image tag ${DockerUser}/${Target}:${Latest} mizarjp/${Target}:latest;
+            docker image tag ${Target}:${Latest} ${Target}:latest;
         }
 
     }
