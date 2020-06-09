@@ -43,7 +43,7 @@ Write-Host 'Successfully installed MSYS2';``
     New-Item -ItemType "Directory" -Path $DockerPath -ErrorAction SilentlyContinue;
     Out-File -InputObject @"
 # escape=``
-FROM mizarjp/winci-msys2-base:$Tag
+FROM winci-msys2-base:$Tag
 RUN powershell -Command "``
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Syuu; ps -ef ^| grep '[?]' ^| awk '{print ```$2}' ^| xargs -r kill\";``
