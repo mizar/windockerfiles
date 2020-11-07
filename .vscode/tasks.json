@@ -54,6 +54,12 @@
             "problemMatcher": []
         },
         {
+            "label": "pull servercore:2009",
+            "type": "shell",
+            "command": "docker pull mcr.microsoft.com/windows/servercore:2009",
+            "problemMatcher": []
+        },
+        {
             "label": "pull servercore:2004",
             "type": "shell",
             "command": "docker pull mcr.microsoft.com/windows/servercore:2004",
@@ -113,6 +119,13 @@
             "type": "shell",
             "group": "test",
             "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2004 powershell",
+            "problemMatcher": []
+        },
+        {
+            "label": "servercore:2009 enter powershell",
+            "type": "shell",
+            "group": "test",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2009 powershell",
             "problemMatcher": []
         },
         {
