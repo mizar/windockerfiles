@@ -13,6 +13,11 @@
 
 ## examples
 
+### Switch to Windows Container
+
+- cmd.exe: `%ProgramFiles%\Docker\Docker\DockerCli.exe -SwitchWindowsEngine`
+- powershell: `& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchWindowsEngine`
+
 ### build docker
 
 ```
