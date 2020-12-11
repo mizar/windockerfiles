@@ -18,27 +18,27 @@
         {
             "label": "winci-msys2 docker build",
             "type": "shell",
-            "command": "powershell -exec bypass -file winci-msys2/build_docker.ps1",
+            "command": "pwsh -exec bypass -file winci-msys2/build_docker.ps1",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "winci-msys2 push image",
             "type": "shell",
-            "command": "powershell -exec bypass -file winci-msys2/push_image.ps1",
+            "command": "pwsh -exec bypass -file winci-msys2/push_image.ps1",
             "problemMatcher": []
         },
         {
             "label": "winci-andk docker build",
             "type": "shell",
-            "command": "powershell -exec bypass -file winci-andk/build_docker.ps1",
+            "command": "pwsh -exec bypass -file winci-andk/build_docker.ps1",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "winci-andk push image",
             "type": "shell",
-            "command": "powershell -exec bypass -file winci-andk/push_image.ps1",
+            "command": "pwsh -exec bypass -file winci-andk/push_image.ps1",
             "problemMatcher": []
         },
         {
@@ -108,24 +108,24 @@
             "problemMatcher": []
         },
         {
-            "label": "servercore:ltsc2019 enter powershell",
+            "label": "servercore:ltsc2019 enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:ltsc2019 powershell",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:ltsc2019 pwsh",
             "problemMatcher": []
         },
         {
-            "label": "servercore:2004 enter powershell",
+            "label": "servercore:2004 enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2004 powershell",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2004 pwsh",
             "problemMatcher": []
         },
         {
-            "label": "servercore:2009 enter powershell",
+            "label": "servercore:2009 enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2009 powershell",
+            "command": "docker run -it --rm mcr.microsoft.com/windows/servercore:2009 pwsh",
             "problemMatcher": []
         },
         {
@@ -143,17 +143,17 @@
             "problemMatcher": []
         },
         {
-            "label": "winci-msys2:ltsc2019 enter powershell",
+            "label": "winci-msys2:ltsc2019 enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm winci-msys2:ltsc2019 powershell",
+            "command": "docker run -it --rm winci-msys2:ltsc2019 pwsh",
             "problemMatcher": []
         },
         {
-            "label": "winci-msys2:latest enter powershell",
+            "label": "winci-msys2:latest enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm winci-msys2:latest powershell",
+            "command": "docker run -it --rm winci-msys2:latest pwsh",
             "problemMatcher": []
         },
         {
@@ -192,10 +192,10 @@
             "problemMatcher": []
         },
         {
-            "label": "winci-msys2-base:latest enter powershell",
+            "label": "winci-msys2-base:latest enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm winci-msys2-base:latest powershell",
+            "command": "docker run -it --rm winci-msys2-base:latest pwsh",
             "problemMatcher": []
         },
         {
@@ -227,17 +227,10 @@
             "problemMatcher": []
         },
         {
-            "label": "winci-andk:latest enter powershell",
+            "label": "winci-andk:latest enter pwsh",
             "type": "shell",
             "group": "test",
-            "command": "docker run -it --rm winci-andk:latest powershell",
-            "problemMatcher": []
-        },
-        {
-            "label": "winci-andk:latest update check",
-            "type": "shell",
-            "command": "docker run --rm winci-andk:latest C:\\Android\\android-sdk\\tools\\bin\\sdkmanager.bat --sdk_root=C:\\Android\\android-sdk --list",
-            "group": "test",
+            "command": "docker run -it --rm winci-andk:latest pwsh",
             "problemMatcher": []
         }
     ]

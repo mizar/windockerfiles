@@ -2,8 +2,8 @@
 
 #& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
-$Latest = '2004';
-$Tags = @('2004';'1909';'ltsc2019';);
+$Latest = '2009';
+$Tags = @('2009';);
 $Targets = @('winci-andk';);
 
 # AdoptOpenJDK : https://adoptopenjdk.net/archive.html

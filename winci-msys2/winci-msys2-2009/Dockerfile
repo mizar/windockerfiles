@@ -1,5 +1,5 @@
 # escape=`
-FROM winci-msys2-base:ltsc2019
+FROM winci-msys2-base:2009
 RUN powershell -Command "`
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
 C:\msys64\usr\bin\bash.exe -lc \"sed -i '1iServer = https://jaist.dl.sourceforge.net/project/msys2/REPOS/MSYS2/`$arch/' /etc/pacman.d/mirrorlist.msys\";`
