@@ -5,7 +5,7 @@ RUN powershell -Command "`
 C:\msys64\usr\bin\bash.exe -lc \"ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Sy; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
 C:\msys64\usr\bin\bash.exe -lc \"pacman --noconfirm --disable-download-timeout -Sy; ps -ef ^| grep '[?]' ^| awk '{print `$2}' ^| xargs -r kill\";`
-C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -Sy clang:x openblas:x openmp:x toolchain:x expect: git:';`
+C:\msys64\usr\bin\bash.exe -lc 'pacboy --needed --noconfirm --disable-download-timeout -Sy clang:m openblas:m openmp:m toolchain:m expect: git:';`
 C:\msys64\usr\bin\bash.exe -lc 'pacman --noconfirm -Scc';`
 Exit-PSSession;`
 "
