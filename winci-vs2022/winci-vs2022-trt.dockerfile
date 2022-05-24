@@ -35,7 +35,7 @@ curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buildtoo
 FROM VSBUILDTOOLS_BASE AS VSBUILDTOOLS_CUDA
 
 RUN powershell -c "`
-curl.exe -RL#o C:\cuda_11.7.0_windows_network.exe https://developer.download.nvidia.com/compute/cuda/11.7.0/network_installers/cuda_11.7.0_windows_network.exe;`
+curl.exe -RLo C:\cuda_11.7.0_windows_network.exe https://developer.download.nvidia.com/compute/cuda/11.7.0/network_installers/cuda_11.7.0_windows_network.exe;`
 C:\cuda_11.7.0_windows_network.exe -s cudart_11.7 nvcc_11.7 nvrtc_11.7 visual_studio_integration_11.7;`
 Wait-Process -Name cuda_11.7.0_windows_network -ErrorAction SilentlyContinue;`
 Remove-Item C:\cuda_11.7.0_windows_network.exe;`
