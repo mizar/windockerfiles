@@ -1,5 +1,6 @@
 # escape=`
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+ARG basetag="ltsc2019"
+FROM mcr.microsoft.com/windows/servercore:${basetag}
 #ADD 7za920.zip C:\Windows\Temp\
 #ADD 7za920.zip msys2-base-x86_64-latest.tar.xz C:\Windows\Temp\
 RUN powershell -Command "`

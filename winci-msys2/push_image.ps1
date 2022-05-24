@@ -1,9 +1,9 @@
-﻿Set-Location $PSScriptRoot;
+﻿Push-Location $PSScriptRoot;
 
-#& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
+& $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
 $DockerUser = 'mizarjp';
-$Tags = @('latest';'2009';'2004';'1909';'ltsc2019';);
+$Tags = @('latest';'ltsc2019';'ltsc2022';'2004';'20H2';);
 $Targets = @('winci-msys2';'winci-msys2-base';);
 
 $Targets|ForEach-Object { $Target = $_;
@@ -13,3 +13,5 @@ $Targets|ForEach-Object { $Target = $_;
         docker image push ${DockerUser}/${Target}:${Tag};
     }
 }
+
+Pop-Location;
