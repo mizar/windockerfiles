@@ -3,7 +3,7 @@
 & $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
 $Latest = 'ltsc2022';
-$Tags = @('ltsc2019';'ltsc2022';'2004';'20H2';);
+$Tags = @('ltsc2019';'ltsc2022';'20H2';);
 $Targets = @('winci-msys2-base';'winci-msys2';);
 
 function DockerExec($o) {

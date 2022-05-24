@@ -3,7 +3,7 @@
 & $Env:ProgramFiles\\Docker\\Docker\\DockerCli.exe -SwitchWindowsEngine
 
 $DockerUser = 'mizarjp';
-$Tags = @('latest';'ltsc2019';'ltsc2022';'2004';'20H2';);
+$Tags = @('latest';'ltsc2019';'ltsc2022';'20H2';);
 $Targets = @('winci-msys2';'winci-msys2-base';);
 
 $Targets|ForEach-Object { $Target = $_;
