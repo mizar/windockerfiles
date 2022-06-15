@@ -4,7 +4,7 @@
 
 $Latest = 'ltsc2022';
 $Tags = @('ltsc2019';'ltsc2022';'20H2';);
-$Targets = @('winci-msys2-base';'winci-msys2';);
+$Targets = @('winci-msys2';);
 
 function DockerExec($o) {
     docker.exe pull mcr.microsoft.com/windows/servercore:$($o.Tag);

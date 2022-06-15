@@ -4,7 +4,7 @@
 
 $DockerUser = 'mizarjp';
 $Tags = @('latest';'ltsc2019';'ltsc2022';'20H2';);
-$Targets = @('winci-msys2';'winci-msys2-base';);
+$Targets = @('winci-msys2';);
 
 $Targets|ForEach-Object { $Target = $_;
     $Tags|ForEach-Object { $Tag = $_;
